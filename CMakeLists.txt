@@ -1,1 +1,3 @@
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/src")
+
 include("${CMAKE_CURRENT_LIST_DIR}/src/Index.cmake")
