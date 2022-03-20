@@ -12,10 +12,10 @@ project(
   VERSION 0.2.0
   LANGUAGES CXX C)
 
-# ### Initialize project_options
-# project_options(
-#   ENABLE_CACHE
-#   ENABLE_CONAN
+### Initialize project_options
+project_options(
+  ENABLE_CACHE
+  ENABLE_CONAN
 #   # WARNINGS_AS_ERRORS
 #   ENABLE_CPPCHECK
 #   ENABLE_CLANG_TIDY
@@ -24,7 +24,7 @@ project(
 #   # ENABLE_PCH
 #   # PCH_HEADERS <Eigen/Dense> <fmt/core.h> <vector> <utility> <string> <string_view>
 #   # ENABLE_DOXYGEN
-#   ENABLE_INTERPROCEDURAL_OPTIMIZATION
+  ENABLE_INTERPROCEDURAL_OPTIMIZATION
 #   # ENABLE_USER_LINKER
 #   # ENABLE_BUILD_WITH_TIME_TRACE
 #   # ENABLE_UNITY
@@ -33,11 +33,11 @@ project(
 #   # ENABLE_SANITIZER_UNDEFINED_BEHAVIOR
 #   # ENABLE_SANITIZER_THREAD
 #   # ENABLE_SANITIZER_MEMORY
-# )
+)
 
 # add src, tests, etc here:
 add_executable(another_main another_main.cpp)
-#XXX target_link_libraries(another_main PRIVATE project_options project_warnings)
+target_link_libraries(another_main PRIVATE project_options project_warnings)
 
 ## dependencies
 #XXX set(DEPENDENCIES_CONFIGURED myproj)
