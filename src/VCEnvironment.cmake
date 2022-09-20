@@ -67,7 +67,11 @@ macro(msvc_toolchain)
       message(STATUS "Using Windows MSVC toolchain")
       include(FetchContent)
       FetchContent_Declare(
-        _msvc_toolchain URL "https://github.com/aminya/Toolchain/archive/95891a1e28a406ffb22e572f3ef24a7a8ad27ec0.zip")
+        _msvc_toolchain
+        GIT_REPOSITORY https://github.com/aminya/Toolchain.git
+        GIT_TAG 95891a1e28a406ffb22e572f3ef24a7a8ad27ec0
+        # XXX URL "https://github.com/aminya/Toolchain/archive/95891a1e28a406ffb22e572f3ef24a7a8ad27ec0.zip"
+      )
       FetchContent_MakeAvailable(_msvc_toolchain)
       include("${_msvc_toolchain_SOURCE_DIR}/Windows.MSVC.toolchain.cmake")
       message(STATUS "Setting CXX/C compiler to ${CMAKE_CXX_COMPILER}")

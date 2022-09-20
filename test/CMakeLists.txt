@@ -101,7 +101,7 @@ add_test(NAME main COMMAND main)
 add_library(lib INTERFACE)
 set(lib_INCLUDE_DIR "include")
 target_include_directories(lib INTERFACE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${lib_INCLUDE_DIR}>"
-                                         "$<INSTALL_INTERFACE:./${CMAKE_INSTALL_INCLUDEDIR}>") # TODO(refactor)
+                                         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>") # TODO(refactor)
 target_link_libraries(lib INTERFACE project_options project_warnings)
 target_link_system_libraries(
   lib
@@ -113,7 +113,7 @@ target_link_system_libraries(
 add_library(lib2 "./src/mylib2/lib.cpp")
 set(lib2_INCLUDE_DIR2 "include")
 target_include_directories(lib2 PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${lib2_INCLUDE_DIR2}>"
-                                       "$<INSTALL_INTERFACE:./${CMAKE_INSTALL_INCLUDEDIR}>") # TODO(refactor)
+                                       "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>") # TODO(refactor)
 target_link_libraries(lib2 PRIVATE project_options project_warnings)
 target_link_system_libraries(
   lib2

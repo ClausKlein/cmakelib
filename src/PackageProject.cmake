@@ -168,7 +168,10 @@ function(package_project)
   # download ForwardArguments
   FetchContent_Declare(
     _fargs
-    URL https://github.com/polysquare/cmake-forward-arguments/archive/8c50d1f956172edb34e95efa52a2d5cb1f686ed2.zip)
+    GIT_REPOSITORY https://github.com/polysquare/cmake-forward-arguments.git
+    GIT_TAG 8c50d1f956172edb34e95efa52a2d5cb1f686ed2
+    # XXX URL https://github.com/polysquare/cmake-forward-arguments/archive/8c50d1f956172edb34e95efa52a2d5cb1f686ed2.zip
+  )
   # XXX FetchContent_MakeAvailable(_fargs)
   FetchContent_GetProperties(_fargs)
   if(NOT _fargs_POPULATED)
@@ -189,7 +192,12 @@ function(package_project)
     "${_multiValueArgs};DEPENDENCIES;PRIVATE_DEPENDENCIES")
 
   # download ycm
-  FetchContent_Declare(_ycm URL https://github.com/robotology/ycm/archive/refs/tags/v0.13.0.zip)
+  FetchContent_Declare(
+    _ycm
+    GIT_REPOSITORY https://github.com/robotology/ycm.git
+    GIT_TAG v0.13.0
+    # XXX URL https://github.com/robotology/ycm/archive/refs/tags/v0.13.0.zip
+  )
   # XXX FetchContent_MakeAvailable(_ycm)
   FetchContent_GetProperties(_ycm)
   if(NOT _ycm_POPULATED)
