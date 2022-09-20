@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 3.16...3.21)
+# usage:
+#
+# cmake -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=$PWD/mycomp_provider.cmake -S . -B build -G Ninja -Wno-dev
+#
+cmake_minimum_required(VERSION 3.16...3.24)
 
 # set a default CXX standard used by the external tools like clang-tidy, cppcheck, etc.
 # You can later set fine-grained standards for each target using `target_compile_features`
@@ -116,10 +120,7 @@ target_link_system_libraries(
   PRIVATE
   fmt::fmt
   Eigen3::Eigen)
-target_link_system_libraries(
-  lib2
-  PRIVATE
-  mythirdpartylib)
+target_link_system_libraries(lib2 PRIVATE mythirdpartylib)
 
 # package everything automatically
 package_project(
