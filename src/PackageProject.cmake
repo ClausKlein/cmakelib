@@ -169,6 +169,7 @@ function(package_project)
   FetchContent_Declare(
     _fargs
     URL https://github.com/polysquare/cmake-forward-arguments/archive/8c50d1f956172edb34e95efa52a2d5cb1f686ed2.zip)
+  # XXX FetchContent_MakeAvailable(_fargs)
   FetchContent_GetProperties(_fargs)
   if(NOT _fargs_POPULATED)
     FetchContent_Populate(_fargs)
@@ -189,6 +190,7 @@ function(package_project)
 
   # download ycm
   FetchContent_Declare(_ycm URL https://github.com/robotology/ycm/archive/refs/tags/v0.13.0.zip)
+  # XXX FetchContent_MakeAvailable(_ycm)
   FetchContent_GetProperties(_ycm)
   if(NOT _ycm_POPULATED)
     FetchContent_Populate(_ycm)
