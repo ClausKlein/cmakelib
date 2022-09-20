@@ -1,3 +1,4 @@
+---
 name: ci
 on:
   pull_request:
@@ -15,7 +16,7 @@ jobs:
       matrix:
         os:
           - windows-2022
-          - ubuntu-20.04
+          - ubuntu-latest
           - macos-11
         compiler:
           - llvm
@@ -27,21 +28,21 @@ jobs:
         include:
           - os: "windows-2022"
             compiler: "msvc"
-            cmake: true
+            cmake: 3.24.2
             vcvarsall: true
           - os: "windows-2022"
             compiler: "msvc"
-            cmake: 3.18.0
+            cmake: 3.24.2
             cmake_generator: "Ninja"
             vcvarsall: true
           - os: "windows-2022"
             compiler: "msvc"
-            cmake: 3.18.0
+            cmake: 3.24.2
             cmake_generator: "Ninja"
             vcvarsall: false
           - os: "windows-2022"
             compiler: "msvc"
-            cmake: 3.18.0
+            cmake: 3.24.2
             vcvarsall: false
     steps:
       - uses: actions/checkout@v2
@@ -82,9 +83,8 @@ jobs:
           CMAKE_GENERATOR: ${{ matrix.cmake_generator }}
 
       - name: Lint
-        if: ${{ matrix.os == 'ubuntu-20.04' && matrix.compiler == 'gcc' }}
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.compiler == 'gcc' }}
         run: |
-          # TODO add to setup-cpp
           python3 -m pip install --user cmakelint cmake-format
 
           task lint

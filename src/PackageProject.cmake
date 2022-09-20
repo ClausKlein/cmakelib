@@ -54,6 +54,8 @@ function(package_project)
     "${_multiValueArgs}"
     "${ARGN}")
 
+  include(FetchContent)
+
   # Set default options
   include(GNUInstallDirs) # Define GNU standard installation directories such as CMAKE_INSTALL_DATADIR
 
@@ -168,15 +170,15 @@ function(package_project)
   # download ForwardArguments
   FetchContent_Declare(
     _fargs
-    GIT_REPOSITORY https://github.com/polysquare/cmake-forward-arguments.git
-    GIT_TAG 8c50d1f956172edb34e95efa52a2d5cb1f686ed2
-    # XXX URL https://github.com/polysquare/cmake-forward-arguments/archive/8c50d1f956172edb34e95efa52a2d5cb1f686ed2.zip
+    URL https://github.com/polysquare/cmake-forward-arguments/archive/8c50d1f956172edb34e95efa52a2d5cb1f686ed2.zip
+    # GIT_REPOSITORY https://github.com/polysquare/cmake-forward-arguments.git
+    # GIT_TAG 8c50d1f956172edb34e95efa52a2d5cb1f686ed2
   )
-  # XXX FetchContent_MakeAvailable(_fargs)
-  FetchContent_GetProperties(_fargs)
-  if(NOT _fargs_POPULATED)
-    FetchContent_Populate(_fargs)
-  endif()
+  FetchContent_MakeAvailable(_fargs)
+  # FetchContent_GetProperties(_fargs)
+  # if(NOT _fargs_POPULATED)
+  #   FetchContent_Populate(_fargs)
+  # endif()
   include("${_fargs_SOURCE_DIR}/ForwardArguments.cmake")
 
   # prepare the forward arguments for ycm
@@ -194,15 +196,15 @@ function(package_project)
   # download ycm
   FetchContent_Declare(
     _ycm
-    GIT_REPOSITORY https://github.com/robotology/ycm.git
-    GIT_TAG v0.13.0
-    # XXX URL https://github.com/robotology/ycm/archive/refs/tags/v0.13.0.zip
+    URL https://github.com/robotology/ycm/archive/refs/tags/v0.13.0.zip
+    # GIT_REPOSITORY https://github.com/robotology/ycm.git
+    # GIT_TAG v0.13.0
   )
-  # XXX FetchContent_MakeAvailable(_ycm)
-  FetchContent_GetProperties(_ycm)
-  if(NOT _ycm_POPULATED)
-    FetchContent_Populate(_ycm)
-  endif()
+  FetchContent_MakeAvailable(_ycm)
+  # FetchContent_GetProperties(_ycm)
+  # if(NOT _ycm_POPULATED)
+  #   FetchContent_Populate(_ycm)
+  # endif()
   include("${_ycm_SOURCE_DIR}/modules/InstallBasicPackageFiles.cmake")
 
   install_basic_package_files(${_PackageProject_NAME} "${_FARGS_LIST}")

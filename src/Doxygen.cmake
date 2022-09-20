@@ -30,6 +30,8 @@ function(enable_doxygen DOXYGEN_THEME)
   endif()
 
   if("${DOXYGEN_THEME}" STREQUAL "awesome" OR "${DOXYGEN_THEME}" STREQUAL "awesome-sidebar")
+    include(FetchContent)
+
     # use a modern doxygen theme
     # https://github.com/jothepro/doxygen-awesome-css v2.0.2
     FetchContent_Declare(
